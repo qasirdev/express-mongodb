@@ -36,4 +36,5 @@ DELETE {{url}}/api/users/2 HTTP/1.1
 ###
 GET {{url}}/api/products
 ###
-PUT {{url}}/empoloyees/
+PUT {{url}}/api/empoloyees/
+###

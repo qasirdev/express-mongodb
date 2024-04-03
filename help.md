@@ -12,6 +12,7 @@ npx tsc --build //to build on the basis of tsconfig.json file
 node ./dist/index.js // to list port 3010
 
 npm i express-validator
+pm install cookie-parser @types/cookie-parser
 
 <!-- 
 express playlist
