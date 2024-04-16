@@ -1,14 +1,14 @@
 export const createUserValidationSchema = {
-  name: {
+  username: {
     notEmpty: {
-      errorMessage: 'Name is required'
+      errorMessage: 'username is required'
     },
     isLength: {
       options: { min: 2, max:8 },
-      errorMessage: 'Name must be between 2 and 8 characters long'
+      errorMessage: 'username must be between 2 and 8 characters long'
     },
     isString:{
-      errorMessage: "Name should be a string"
+      errorMessage: "username should be a string"
     }
   },
   displayName: {

@@ -1,4 +1,4 @@
-/// <reference path="../types/index.d.ts" />
+/// <reference path="../../types/index.d.ts" />
 // add above code in a single file OR
 //"files": ["types/index.d.ts"] in tsconfig.json
 
@@ -20,6 +20,18 @@ usersRouter.get('/api/users',
   .isString().withMessage("value should be string"),
   (req:Request<{query:{filter:string, value: string}}>,res:Response, next:NextFunction) => {    
     
+  console.log(req.session);
+  console.log('req.session.id:',req.session.id);
+  req.sessionStore.get(req.session.id, (err:any, sessionData:any) => {
+    if(err) {
+      console.log(err);
+      return res.status(500)
+        .send(`Error while getting user data ${err}`);
+    } else {
+      console.log('sessionData:',sessionData);
+    }
+  });
+  
   res.cookie('hello','world',{maxAge: 60000 * 60 ,httpOnly:true, signed: true}); // set http only
   const result = validationResult(req);
   console.log(result);

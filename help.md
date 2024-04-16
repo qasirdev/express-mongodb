@@ -14,6 +14,8 @@ node ./dist/index.js // to list port 3010
 npm i express-validator
 pm install cookie-parser @types/cookie-parser
 
+npm install express-session @types/express-session
+
 <!-- 
 express playlist
 https://www.youtube.com/watch?v=P6RZfI8KDYc&list=PL_cUvD4qzbkwjmjy-KjbieZ8J9cGwxZpC&index=2

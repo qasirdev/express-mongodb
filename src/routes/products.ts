@@ -1,4 +1,5 @@
 import { Router, Request, Response, NextFunction } from "express";
+import session from "express-session";
 
 const productsRouter = Router();
 
@@ -10,9 +11,9 @@ productsRouter.get('/api/products', (req:Request,res:Response, next:NextFunction
   // if(req.cookies.hello && req.cookies.hello === 'world'){
   if(req.signedCookies.hello && req.signedCookies.hello === 'world'){
     res.send([
-      {name: 'chicken'},
-      {name: 'chicken1'},
-      {name: 'chicken2'}
+      {id: 1,name: 'chicken'},
+      {id: 2,name: 'chicken1'},
+      {id: 4,name: 'chicken2'}
     ])
   }
   
@@ -20,5 +21,20 @@ productsRouter.get('/api/products', (req:Request,res:Response, next:NextFunction
 
 })
 
+productsRouter.get('/api/products/2', (req:Request,res:Response, next:NextFunction) => {
+  // console.log(req.session);
+  // console.log(req.session.id);
+  // console.log(req.session.cookie);
+
+  req.session.visited = true
+  // console.log( typeof req.session.visited);
+  console.log(req.session);
+  const id =parseInt(req.params.id);
+  if(!isNaN(id)){
+    return res.status(404).json({message:'Not found'});
+  }else{
+    return res.json({id:'2', name:"Chicken Burger"});
+  }
+})
 
 export default productsRouter;
