@@ -1,6 +1,9 @@
 import * as express from "express-serve-static-core";
 declare global {
 	namespace Express {
+    interface User {
+      id: number
+    }
 		interface Request {
 			userIndex?: number;
       // session: {

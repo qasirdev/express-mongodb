@@ -16,6 +16,12 @@ pm install cookie-parser @types/cookie-parser
 
 npm install express-session @types/express-session
 
+npm install passport  passport-local
+npm install --save @types/passport  @types/passport-local
+
+https://stackoverflow.com/questions/27637609/understanding-passport-serialize-deserialize
+
+
 <!-- 
 express playlist
 https://www.youtube.com/watch?v=P6RZfI8KDYc&list=PL_cUvD4qzbkwjmjy-KjbieZ8J9cGwxZpC&index=2

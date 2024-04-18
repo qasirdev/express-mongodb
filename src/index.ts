@@ -4,6 +4,8 @@ import router from "./routes";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import { mockUsers } from "./utils/constants";
+import passport from "passport";
+import "./strategies/local-strategy";
 
 const PORT= process.env.PORT || 3010
 
@@ -30,6 +32,9 @@ app.use(session({
     maxAge: 60000 * 60
   }
 }))
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(router)
 
 
@@ -85,3 +90,24 @@ app.get('/api/cart', (req:Request,res:Response, next:NextFunction) => {
 
   return res.status(200).send(req.session.cart)
 })
+
+app.post('/api/authwithpassport',passport.authenticate('local'),(req:Request,res:Response, next:NextFunction) => {
+  return res.sendStatus(200);
+})
+
+app.get('/api/authwithpassport/status', (req:Request,res:Response, next:NextFunction) => {
+  console.log('inside api/auth/with/passport/status');
+  console.log(req.user);
+  console.log(req.session);
+
+  return req.user ? res.send(req.user) : res.sendStatus(401);
+})
+
+app.post('/api/authwithpassport/logout', (req:Request,res:Response, next:NextFunction) => {
+  if(!req.user) return res.sendStatus(401);
+  req.logout((err) => {
+    if(err) return res.sendStatus(400);
+    return res.status(200);
+  })
+})
+

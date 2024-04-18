@@ -80,3 +80,23 @@ Content-Type: application/json
 
 GET {{url}}/api/cart
 ###
+
+# pasport
+POST {{url}}/api/authwithpassport/ HTTP/1.1
+User-Agent: rest-client
+Accept-Language: en-GB,en-US;q=0.8,en;q=0.6,zh-CN;q=0.4
+Content-Type: application/json
+rest-client.rememberCookiesForSubsequentRequests
+
+{
+  "username": "qas4", 
+  # "email": "qas4@gmail.com", 
+  "password": "hello123"
+}
+###
+
+GET {{url}}/api/authwithpassport/status
+###
+
+POST {{url}}/api/authwithpassport/logout
+###
